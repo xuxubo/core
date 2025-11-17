@@ -155,7 +155,8 @@ pub fn[A] Deque::from_array(arr : ArrayView[A]) -> Deque[A] {
   for i, x in arr {
     buf[i] = x
   }
-  Deque::{ buf, len, head: 0, tail: len - 1 }
+  let tail = if len == 0 { 0 } else { len - 1 }
+  Deque::{ buf, len, head: 0, tail }
 }
 
 ///|
